@@ -168,7 +168,11 @@ module.exports = {
       background: "#F8F8F8",
       primary: "#5452FC",
       primaryOpacity50: "rgba(84, 82, 252, .5)",
+      primaryText: "rgba(39, 41, 100, 1)",
+      link: "rgba(47, 69, 101, 1)",
       borderInput: "rgba(0,0,0,0.2)",
+      hover: "rgba(222, 230, 248, 1)",
+      headerTable: "rgba(48, 48, 48, 1)"
     }),
     columns: {
       auto: "auto",

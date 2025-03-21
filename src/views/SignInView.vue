@@ -1,12 +1,12 @@
 <template>
-  <main
+  <component
+    :is="layout"
     class="relative h-full w-full flex flex-col justify-center xl:flex-row xl:justify-between 2xl:justify-center items-center"
   >
     <article class="absolute left-8 top-8">
-      <img src="../assets/images/convicti-logo.png" alt="Logo da Convicti" />
+      <Logo />
       <p class="uppercase">Convic<span class="text-primary">ti</span></p>
     </article>
-
     <div
       class="flex flex-col items-center justify-center gap-8 w-full max-w-lg p-14"
     >
@@ -63,11 +63,10 @@
         </div>
       </article>
     </div>
-  </main>
+  </component>
 </template>
 
-<script lang="ts">
-import { Vue } from "vue-class-component";
-
-export default class SignIn extends Vue {}
+<script setup lang="ts">
+import Logo from "../components/ui/LogoImage.vue";
+const layout = "blank-view";
 </script>

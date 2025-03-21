@@ -1,23 +1,34 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import HomeView from "../views/HomeView.vue";
-import SignIn from "@/views/SignInView.vue";
+
+const lazyloader = (view: string) => {
+  return () => import(`../views/${view}.vue`);
+};
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
-    component: HomeView,
+    component: lazyloader("HomeView"),
   },
   {
     path: "/login",
     name: "login",
-    component: SignIn,
+    component: lazyloader("SignInView"),
+  },
+  {
+    path: "/dashboard",
+    name: "dashboard",
+    component: lazyloader("DashboardView"),
+  },
+  {
+    path: "/configuracoes",
+    name: "configuracoes",
+    component: lazyloader("SettingsView"),
   },
   {
     path: "/about",
     name: "about",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+    component: lazyloader("AboutView"),
   },
 ];
 
