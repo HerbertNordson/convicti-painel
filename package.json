@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@fontsource/nunito-sans": "^5.2.5",
     "autoprefixer": "^10",
     "core-js": "^3.8.3",
     "postcss": "^8",

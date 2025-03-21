@@ -60,7 +60,7 @@
         </ul>
       </div>
     </aside>
-    <main class="w-full h-full max-w-7xl p-12">
+    <main class="w-full h-full max-w-7xl p-4 md:p-12 max-h-screen overflow-y-auto">
       <slot></slot>
     </main>
   </div>
