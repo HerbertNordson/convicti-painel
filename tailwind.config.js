@@ -172,7 +172,9 @@ module.exports = {
       link: "rgba(47, 69, 101, 1)",
       borderInput: "rgba(0,0,0,0.2)",
       hover: "rgba(222, 230, 248, 1)",
-      headerTable: "rgba(48, 48, 48, 1)"
+      headerTableOpacity40: "rgba(48, 48, 48, .4)",
+      headerTable: "rgba(48, 48, 48, 1)",
+      success: "#00EC6D",
     }),
     columns: {
       auto: "auto",
@@ -342,6 +344,7 @@ module.exports = {
         '"Courier New"',
         "monospace",
       ],
+      nunito: ["Nunito Sans", "sans-serif"],
     },
     fontSize: {
       xs: ["0.75rem", { lineHeight: "1rem" }],
