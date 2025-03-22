@@ -29,8 +29,8 @@ export default createStore({
     evaluations: { average: 0, android: 0, ios: 0 },
     errors: { total: 0, android: 0, ios: 0 },
     features: [] as Feature[],
-    users: [] as Perfil[],
-    perfils: [] as Users[],
+    users: [] as Users[],
+    perfils: [] as Perfil[],
   },
   mutations: {
     SET_DOWNLOADS(state, data) {
@@ -53,6 +53,9 @@ export default createStore({
     },
     SET_USERS(state, data) {
       state.users = data;
+    },
+    SET_PERFILS(state, data) {
+      state.perfils = data;
     },
   },
   actions: {
@@ -118,36 +121,33 @@ export default createStore({
         console.error("Erro ao buscar dados:", error);
       }
     },
-    async getPerfils({ commit }) {
-      try {
-        const resPerfils = await api.get("users");
-        const newPerfils = resPerfils.data.data.map((item: any) => ({
-          name: item.name,
-          quantity: resPerfils.data.data.filter(
-            (el: any) => el.profile_id === item.profile_id
-          ).length,
-          permissions: item.profile.permissions.map((el: any) => el.name),
-          id: item.id,
-        }));
-
-        commit("SET_USERS", newPerfils);
-      } catch (error) {
-        console.error("Erro ao buscar dados:", error);
-      }
-    },
     async getUsers({ commit }) {
       try {
-        const resUsers = await api.get("profiles");
+        const resUsers = await api.get("users");
         const newUsers = resUsers.data.data.map((item: any) => ({
-          name: item.name,
-          quantity: resUsers.data.data.filter(
-            (el: any) => el.profile_id === item.profile_id
-          ).length,
-          permissions: item.profile.permissions.map((el: any) => el.name),
+          name: item.profile.name,
+          email: item.email,
+          perfil: item.profile.name,
+          status: item.active,
           id: item.id,
         }));
 
         commit("SET_USERS", newUsers);
+      } catch (error) {
+        console.error("Erro ao buscar dados:", error);
+      }
+    },
+    async getPerfils({ commit }) {
+      try {
+        const resPerfils = await api.get("profiles");
+        const newPerfils = resPerfils.data.data.map((item: any) => ({
+          name: item.name,
+          quantity: item.total_users,
+          permissions: item.permissions.map((el: any) => el.name),
+          id: item.id,
+        }));
+
+        commit("SET_PERFILS", newPerfils);
       } catch (error) {
         console.error("Erro ao buscar dados:", error);
       }

@@ -2,8 +2,8 @@
   <component :is="layout">
     <TitlePage :title="'Configurações'" />
     <div class="flex flex-col gap-4">
-      <UsersSection />
       <PerfilsSection />
+      <UsersSection />
     </div>
   </component>
 </template>
