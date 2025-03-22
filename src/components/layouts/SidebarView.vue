@@ -48,6 +48,7 @@
           </li>
           <li>
             <router-link
+              to="login"
               class="flex ittems-center gap-2 rounded-[5px] py-2.5 px-5 cursor-pointer hover:bg-hover"
             >
               <img
@@ -60,7 +61,7 @@
         </ul>
       </div>
     </aside>
-    <main class="w-full h-full max-w-7xl p-4 md:p-12 max-h-screen overflow-y-auto">
+    <main class="w-full h-full max-w-7xl p-4 md:p-12 md:pb-2 max-h-screen overflow-y-auto">
       <slot></slot>
     </main>
   </div>

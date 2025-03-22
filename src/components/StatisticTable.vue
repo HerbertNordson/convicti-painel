@@ -1,29 +1,27 @@
 <template>
-  <div class="max-w-screen overflow-w-scroll">
-    <DataTable
-      :value="feedbacks"
-      stripedRows
-      scrollable
-      scrollHeight="400px"
-      class="custom-table"
-    >
-      <Column field="avaliacao" header="Avaliação">
-        <template #body="slotProps">
-          <p class="text-gray-700">{{ slotProps.data.avaliacao }}</p>
-        </template>
-      </Column>
-      <Column field="data" header="Data"></Column>
-      <Column field="nota" header="Avaliação"></Column>
-      <Column field="melhorias" header="Melhorias">
-        <template #body="slotProps">
-          <p v-for="melhoria in slotProps.data.melhorias" :key="melhoria">
-            {{ melhoria }}
-          </p>
-        </template>
-      </Column>
-      <Column field="plataforma" header="Plataforma"></Column>
-    </DataTable>
-  </div>
+  <DataTable
+    :value="feedbacks"
+    stripedRows
+    scrollable
+    scrollHeight="400px"
+    class="custom-table"
+  >
+    <Column field="avaliacao" header="Avaliação">
+      <template #body="slotProps">
+        <p class="text-headerTable">{{ slotProps.data.avaliacao }}</p>
+      </template>
+    </Column>
+    <Column field="data" header="Data"></Column>
+    <Column field="nota" header="Avaliação"></Column>
+    <Column field="melhorias" header="Melhorias">
+      <template #body="slotProps">
+        <p v-for="melhoria in slotProps.data.melhorias" :key="melhoria">
+          {{ melhoria }}
+        </p>
+      </template>
+    </Column>
+    <Column field="plataforma" header="Plataforma"></Column>
+  </DataTable>
 </template>
 
 <script setup lang="ts">

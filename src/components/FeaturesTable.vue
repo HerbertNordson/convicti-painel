@@ -1,6 +1,6 @@
 <template>
   <DataTable
-    :value="newFeatures"
+    :value="features"
     stripedRows
     scrollable
     scrollHeight="200px"
@@ -8,12 +8,14 @@
   >
     <Column field="mode" header="Funcionalidade" class="w-11/12">
       <template #body="slotProps">
-        <p class="text-headerTable text-base">{{ slotProps.data.mode }}</p>
+        <p class="text-headerTable text-base">{{ slotProps.data.name }}</p>
       </template>
     </Column>
     <Column field="taxa" header="Taxa De Uso">
       <template #body="slotProps">
-        <p class="text-success text-base text-end">{{ slotProps.data.taxa }}</p>
+        <p class="text-success text-base text-end">
+          {{ slotProps.data.total_usage }}%
+        </p>
       </template>
     </Column>
   </DataTable>
@@ -22,23 +24,13 @@
 <script setup lang="ts">
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
-import { ref } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
+import { useStore } from "vuex";
+const store = useStore();
 
-const newFeatures = ref([
-  {
-    mode: "Veículo em Rota",
-    taxa: "92%",
-  },
-  { mode: "Avaliação de coleta", taxa: "92%" },
-  {
-    mode: "Veículo em Rota",
-    taxa: "92%",
-  },
-  { mode: "Avaliação de coleta", taxa: "92%" },
-  {
-    mode: "Veículo em Rota",
-    taxa: "92%",
-  },
-  { mode: "Avaliação de coleta", taxa: "92%" },
-]);
+const features = computed(() => store.getters.features);
+
+onMounted(() => {
+  store.dispatch("getFeatures");
+});
 </script>
