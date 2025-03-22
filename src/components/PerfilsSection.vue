@@ -1,7 +1,7 @@
 <template>
   <section class="py-3 px-6 bg-white rounded-lg min-h-[300px]">
     <div class="flex items-center justify-between">
-      <h2 class="text-xl mb-2">Usuários</h2>
+      <h2 class="text-xl mb-2">Perfils</h2>
       <button @click="openModal">
         <img src="../assets/icons/sum-icon.svg" alt="Botão de adição" />
       </button>
