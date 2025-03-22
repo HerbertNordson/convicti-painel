@@ -13,7 +13,7 @@
     </Column>
 
     <Column
-      v-if="data?.length && data.some((u) => u.email)"
+      v-if="data && data.length && data.some((u) => u.email)"
       field="email"
       header="Email"
     >
@@ -23,7 +23,7 @@
     </Column>
 
     <Column
-      v-if="data?.length && data.some((u) => u.quantity)"
+      v-if="data && data.length && data.some((u) => u.quantity)"
       field="quantity"
       header="Quantidade de usuários"
     >
@@ -47,7 +47,7 @@
     </Column>
 
     <Column
-      v-if="data?.length && data.some((u) => u.perfil)"
+      v-if="data && data.length && data.some((u) => u.perfil)"
       field="perfil"
       header="Perfil"
     >
@@ -57,7 +57,7 @@
     </Column>
 
     <Column
-      v-if="data?.length && data.some((u) => u.status)"
+      v-if="data && data.length && data.some((u) => u.status)"
       field="status"
       header="Status"
     >
