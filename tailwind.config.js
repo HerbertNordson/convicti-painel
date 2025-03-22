@@ -175,6 +175,12 @@ module.exports = {
       headerTableOpacity40: "rgba(48, 48, 48, .4)",
       headerTable: "rgba(48, 48, 48, 1)",
       success: "#00EC6D",
+      successText: "#006737",
+      successBack: "#CCFFE3",
+      buttonPrimaryModal: "rgba(124, 124, 124, .1)",
+      buttonPrimaryModalText: "#606060",
+      buttonSecundaryModal: "rgba(127, 67, 255, .2)",
+      buttonSecundaryModalText: "rgba(127, 67, 255, 1)",
     }),
     columns: {
       auto: "auto",

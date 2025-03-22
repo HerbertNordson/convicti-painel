@@ -7,3 +7,16 @@
 body {
     font-family: 'Nunito Sans', sans-serif;
 }
+
+.p-dialog {
+    z-index: 10000 !important;
+}
+
+.p-dialog-mask {
+    z-index: 9999 !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+}
+
+button.p-button.p-component.p-button-icon-only.p-button-secondary.p-button-rounded.p-button-text.p-dialog-close-button {
+    display: none;
+}

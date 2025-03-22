@@ -17,17 +17,22 @@
         </p>
       </div>
 
-      <form class="w-full flex flex-col gap-4 max-w-xs">
+      <form
+        class="w-full flex flex-col gap-4 max-w-xs"
+        @submit.prevent="handleSubmit"
+      >
         <div class="flex flex-col gap-2 w-full">
           <input
             type="text"
             class="w-full py-[12px] px-[10px] border border-solid border-borderInput rounded-md text-xs"
             placeholder="Seu e-mail"
+            v-model="email"
           />
           <input
             type="password"
             class="w-full py-[12px] px-[10px] border border-solid border-borderInput rounded-md text-xs"
             placeholder="Sua senha"
+            v-model="password"
           />
         </div>
         <input
@@ -69,4 +74,18 @@
 <script setup lang="ts">
 import Logo from "../components/ui/LogoImage.vue";
 const layout = "blank-view";
+
+import { ref } from "vue";
+import { useStore } from "vuex";
+
+const email = ref("");
+const password = ref("");
+const store = useStore();
+
+const handleSubmit = async () => {
+  await store.dispatch("login", {
+    email: email.value,
+    password: password.value,
+  });
+};
 </script>

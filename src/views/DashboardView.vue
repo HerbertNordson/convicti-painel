@@ -7,28 +7,28 @@
         <div class="grid grid-flow-col grid-cols-3 gap-4">
           <CardStatus
             :title="'Downloads'"
-            :content="'333'"
-            :android="244"
-            :ios="64"
+            :content="downloads.total"
+            :android="downloads.android"
+            :ios="downloads.ios"
             :icon="'cloud-icon.svg'"
             :alt="'Ícone de nuvem azul'"
           />
           <CardStatus
             :title="'Avaliações'"
-            :content="'4.2'"
-            :android="244"
-            :ios="64"
+            :content="evaluations.average"
+            :android="evaluations.android"
+            :ios="evaluations.ios"
             :icon="'star-icon.svg'"
-            :alt="'Ícone de nuvem azul'"
+            :alt="'Ícone de estrela'"
             :hate="true"
           />
           <CardStatus
-            :title="'Downloads'"
-            :content="'333'"
-            :android="244"
-            :ios="64"
+            :title="'Erros'"
+            :content="errors.total"
+            :android="errors.android"
+            :ios="errors.ios"
             :icon="'times-icon.svg'"
-            :alt="'Ícone de nuvem azul'"
+            :alt="'Ícone de erro'"
           />
         </div>
       </section>
@@ -46,17 +46,18 @@
 </template>
 
 <script setup lang="ts">
-import { defineAsyncComponent } from "vue";
+import { computed, defineAsyncComponent, onMounted, onUnmounted, watch } from "vue";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import { ref } from "vue";
+import { useStore } from "vuex";
+const store = useStore();
 
 const layout = "sidebar-view";
 
 const StatisticTable = defineAsyncComponent(
   () => import("@/components/StatisticTable.vue")
 );
-
 const FeaturesTable = defineAsyncComponent(
   () => import("@/components/FeaturesTable.vue")
 );
@@ -66,4 +67,13 @@ const TitlePage = defineAsyncComponent(
 const CardStatus = defineAsyncComponent(
   () => import("@/components/CardStatus.vue")
 );
+
+const downloads = computed(() => store.getters.downloads);
+const evaluations = computed(() => store.getters.evaluations);
+const errors = computed(() => store.getters.errors);
+
+onMounted(() => {
+  store.dispatch("fetchData");
+});
+
 </script>
